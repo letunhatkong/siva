@@ -1,0 +1,139 @@
+<?php
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); //instance of \Magento\Framework\App\ObjectManager
+$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$currentStore = $storeManager->getStore();
+$baseUrl = $currentStore->getBaseUrl();
+$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$linkUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_LINK);
+?>
+
+<div class="firstFt">
+    <div class="ftWrap">
+        <div class="itemMenuFt hasIcon">
+            <div class="titFt">
+                <span>CUSTOMER SERVICE</span>
+            </div>
+            <div class="subMenuFt">
+                <a href="javascript:void(0);"><div>Shipping & Returns</div></a>
+                <a href="javascript:void(0);"><div>Size Guide</div></a>
+                <a href="javascript:void(0);"><div>FAQ</div></a>
+            </div>
+        </div>
+        <div class="itemMenuFt hasIcon">
+            <div class="titFt">
+                <span>COMPANY</span>
+            </div>
+            <div class="subMenuFt">
+                <a href="javascript:void(0);"><div>About SIVA</div></a>
+                <a href="javascript:void(0);"><div>Contact Us</div></a>
+                <a href="javascript:void(0);"><div>Brands</div></a>
+                <a href="javascript:void(0);"><div>&nbsp;&nbsp;&nbsp;- Friend Or Foe</div></a>
+                <a href="javascript:void(0);"><div>&nbsp;&nbsp;&nbsp;- AMFM</div></a>
+            </div>
+        </div>
+        <div class="itemMenuFt hasIcon">
+            <div class="titFt">
+                <span>ACCOUNT</span>
+            </div>
+            <div class="subMenuFt">
+                <a href="javascript:void(0);"><div>My Account</div></a>
+                <a href="javascript:void(0);"><div>My Order Status</div></a>
+                <a href="javascript:void(0);"><div>My Wishlist</div></a>
+
+            </div>
+        </div>
+        <div class="itemMenuFt">
+            <div class="titFt">
+                <span>NEWSLETTER</span>
+            </div>
+            <div class="subMenuFt">
+                <div class="newsletter">
+                    <div class="content">
+                        <form class="form subscribe" novalidate  method="post" id="newsletter-validate-detail"
+                              action="<?= $block->getFormActionUrl() ?>"
+                              data-mage-init='{"validation": {"errorClass": "mage-error"}}' >
+                            <div class="field newsletter">
+                                <label class="label" for="newsletter"><span><?= __('Get our latest news in e-mail.') ?></span></label>
+                                <div class="control">
+                                    <input name="email" type="email" id="newsletter"
+                                           placeholder="<?= __('Enter your email') ?>"
+                                           data-validate="{required:true, 'validate-email':true}"/>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="action subscribe primary" title="SUBSCRIBE" type="submit">
+                                    <span><?= __('SUBSCRIBE') ?></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="itemMenuFt">
+            <div class="titFt">
+                <span>SNS</span>
+            </div>
+            <div class="subMenuFt">
+                <a href="#"><img src="<?= $mediaUrl ?>/images/icon/social/i.png" /></a>
+                <a href="#"><img src="<?= $mediaUrl ?>/images/icon/social/f.png" /></a>
+                <a href="#"><img src="<?= $mediaUrl ?>/images/icon/social/t.png" /></a>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="lastFt">
+    <div class="col-1200">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 paymentFt hidden-xs">
+                <img src="<?= $mediaUrl ?>images/icon/footer/1.png" />
+                <img src="<?= $mediaUrl ?>images/icon/footer/2.png" />
+                <img src="<?= $mediaUrl ?>images/icon/footer/3.png" />
+                <img src="<?= $mediaUrl ?>images/icon/footer/4.png" />
+                <img src="<?= $mediaUrl ?>images/icon/footer/5.png" />
+                <img src="<?= $mediaUrl ?>images/icon/footer/6.png" />
+            </div>
+            <div class="col-xs-12 col-sm-6 cprFt">
+                <span>&#169; 2016 SIVA70.com All Rights Reserved</span>
+                <img class="hidden-xs" src="<?= $mediaUrl ?>images/icon/footer/google.png" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui'], function($){
+        $(document).ready(function($) {
+            var $window = $(window);
+            // Click function
+            $('.itemMenuFt .titFt').click(function(){
+                if ($window.width() < 1240) {
+                    var subMenu = $(this).parent().find('.subMenuFt');
+                    subMenu.toggle();
+                    if (subMenu.is(":visible")) {
+                        $(this).addClass("open");
+                    } else {
+                        $(this).removeClass("open");
+                    }
+                }
+            });
+            // Reset Footer
+            function resetFooter() {
+                $('.subMenuFt').attr("style","");
+                $('.itemMenuFt .titFt').removeClass("open");
+            }
+            // Check Width
+            function checkWidth() {
+                var windowSize = $window.width();
+                if (windowSize >= 1240) {
+                    resetFooter();
+                }
+            }
+            // Resize
+            checkWidth();
+            $(window).resize(checkWidth);
+        });
+    });
+</script>
