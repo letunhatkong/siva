@@ -34,6 +34,9 @@ a {
 .img100 {
     padding-bottom: 100%;
 }
+.img70 {
+    padding-bottom: 70%;
+}
 
 .img-full {
     width: 100%;
@@ -299,3 +302,33 @@ a {
 }
 
 /* # Footer */
+
+/* Slider home */
+#bannerHS {
+    margin-bottom: 70px;
+}
+
+.sliderIcon {
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+}
+.prevButtonWrap {
+    left: 0;
+}
+.nextButtonWrap {
+    right: 0;
+}
+
+.subBannerItem {
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 1239px) {
+    #homePage {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+/* Slider home */
+
