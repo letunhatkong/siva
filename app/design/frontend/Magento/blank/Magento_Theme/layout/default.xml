@@ -13,6 +13,9 @@
         <move element="header.panel" destination="header.panel.wrapper"/>
         <move element="top.links" destination="header.panel" after="-"/>
         <move element="catalog.topnav" destination="store.menu" before="-"/>
+        <!-- Move Search -->
+        <move element="top.search" destination="store.menu" after="catalog.topnav" />
+
         <referenceContainer name="page.top">
             <block class="Magento\Framework\View\Element\Template" name="navigation.sections" before="-" template="Magento_Theme::html/sections.phtml">
                 <arguments>
@@ -51,6 +54,22 @@
 
         <!-- Home Page -->
         <block class="Magento\Framework\View\Element\Template" name="home_page" template="Magento_Theme::html/home.phtml" />
+
+        <!-- Header -->
+        <referenceContainer name="header.panel" htmlTag="div" htmlClass="panel header col-1200" />
+        <!-- Move minicart -->
+        <move element="minicart" destination="top.links" after="-"/>
+        <!-- Remove link on Top Links -->
+        <referenceBlock name="register-link" remove="true" />           <!--for Create Account Link-->
+        <referenceBlock name="wish-list-link" remove="true" />          <!--for WishList Link-->
+        <referenceBlock name="my-account-link" remove="true" />         <!--for My Account Link-->
+        <!-- Logo -->
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="string">auto</argument>
+                <argument name="logo_img_height" xsi:type="string">auto</argument>
+            </arguments>
+        </referenceBlock>
 
         <!-- footer -->
         <referenceBlock name="store_switcher" remove="true" />
