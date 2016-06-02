@@ -541,6 +541,8 @@ li.authorization-link > a > span {
 #search_mini_form .action.search::before {
     font-size: 26px;
     vertical-align: middle;
+    background: url("/pub/media/images/icon/search.png") no-repeat center;
+    color: transparent;
 }
 /* #Search */
 
