@@ -1,0 +1,71 @@
+<?php
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$currentStore = $storeManager->getStore();
+$baseUrl = $currentStore->getBaseUrl();
+$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$linkUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_LINK);
+
+$sa = $_objectManager->get('Sahy\Banner\Block\Frontend\Banners');
+$banners = $sa->getAllBannerByType($sa::TYPE_HOME_BANNER);
+$_sub = $sa->getAllBannerByType($sa::TYPE_SUB_BANNER);
+?>
+
+<div id="homePage" class="col-1200">
+<!-- Home Banner Slider -->
+<?php if (isset($banners) && count($banners) > 0) { ?>
+    <?php $size = count($banners); ?>
+
+    <div id="bannerHS" class="carousel slide" data-ride="carousel" data-interval="false">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <?php $i = 1; ?>
+            <?php foreach($banners as $bn) { ?>
+                <div class="ef-dl item <?= ($i == 1) ? 'active':'' ?>">
+                    <img src="<?= $mediaUrl . $bn['image']?>" />
+                </div>
+                <?php $i++; ?>
+            <?php } ?>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#bannerHS" role="button" data-slide="prev">
+            <div class="prevButtonWrap sliderIcon" aria-hidden="true">
+                <img src="<?= $mediaUrl ?>images/icon/left.png"/>
+            </div>
+        </a>
+        <a class="right carousel-control" href="#bannerHS" role="button" data-slide="next">
+            <div class="nextButtonWrap sliderIcon" aria-hidden="true">
+                <img src="<?= $mediaUrl ?>images/icon/right.png"/>
+            </div>
+        </a>
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <?php $i = 0 ?>
+            <?php foreach($banners as $bn) { ?>
+                <li data-target="#bannerHS" data-slide-to="<?= $i ?>" class="<?= ($i == 0) ? 'active':'' ?>"></li>
+                <?php $i++; ?>
+            <?php } ?>
+        </ol>
+    </div>
+
+<?php } ?>
+
+<!-- Sub Banner  -->
+<div class="row subBanner">
+    <?php $i = 1; ?>
+    <?php foreach($_sub as $item) { ?>
+        <div class="col-xs-6 col-sm-4 subBannerItem">
+            <a href="<?= $item['link'] ?>">
+                <div class="img-resp img70">
+                    <img class="" src="<?= $mediaUrl . $item['image'] ?>"/>
+                </div>
+            </a>
+        </div>
+        <?php $i++; ?>
+    <?php } ?>
+</div>
+<div class="clearfix pad30"></div>
+<!-- # Sub Banner  -->
+
+</div>
