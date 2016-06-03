@@ -20,9 +20,9 @@ $_sub = $sa->getAllBannerByType($sa::TYPE_SUB_BANNER);
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <?php $i = 1; ?>
-            <?php foreach($banners as $bn) { ?>
-                <div class="ef-dl item <?= ($i == 1) ? 'active':'' ?>">
-                    <img src="<?= $mediaUrl . $bn['image']?>" />
+            <?php foreach ($banners as $bn) { ?>
+                <div class="ef-dl item <?= ($i == 1) ? 'active' : '' ?>">
+                    <img src="<?= $mediaUrl . $bn['image'] ?>"/>
                 </div>
                 <?php $i++; ?>
             <?php } ?>
@@ -42,8 +42,8 @@ $_sub = $sa->getAllBannerByType($sa::TYPE_SUB_BANNER);
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <?php $i = 0 ?>
-            <?php foreach($banners as $bn) { ?>
-                <li data-target="#bannerHS" data-slide-to="<?= $i ?>" class="<?= ($i == 0) ? 'active':'' ?>"></li>
+            <?php foreach ($banners as $bn) { ?>
+                <li data-target="#bannerHS" data-slide-to="<?= $i ?>" class="<?= ($i == 0) ? 'active' : '' ?>"></li>
                 <?php $i++; ?>
             <?php } ?>
         </ol>
@@ -54,7 +54,7 @@ $_sub = $sa->getAllBannerByType($sa::TYPE_SUB_BANNER);
 <!-- Sub Banner  -->
 <div class="row subBanner">
     <?php $i = 1; ?>
-    <?php foreach($_sub as $item) { ?>
+    <?php foreach ($_sub as $item) { ?>
         <div class="col-xs-6 col-sm-4 subBannerItem">
             <a href="<?= $item['link'] ?>">
                 <div class="img-resp img70">
@@ -67,5 +67,76 @@ $_sub = $sa->getAllBannerByType($sa::TYPE_SUB_BANNER);
 </div>
 <div class="clearfix pad30"></div>
 <!-- # Sub Banner  -->
+
+<?php // Get Latest Products
+$productCollection = $_objectManager->create('Magento\Catalog\Model\ResourceModel\Product\CollectionFactory');
+$collection = $productCollection->create()
+    ->addAttributeToSelect('*')
+    ->addFieldToFilter("status", "1")
+    ->setOrder('created_at', 'DESC')
+    ->setPageSize(12)// Limit product
+    ->load();
+
+foreach ($collection as $product) {
+    $item = array(
+        'getId' => $product->getId(),
+        'getName' => $product->getName(),
+        'getPrice' => floatval($product->getPrice()),
+        'priceString' => "$" . number_format($product->getPrice(), 2),
+        'getStatus' => $product->getStatus(),
+        'thumbnail' => $mediaUrl . 'catalog/product' . $product->getThumbnail(),
+        'getProductUrl' => $product->getProductUrl(),
+    );
+}
+?>
+
+<?php if (isset($collection) && $collection->getSize() > 0) { ?>
+    <!-- New Products -->
+    <p class="headHome">New Arrivals</p>
+    <div id="newProductHS" class="carousel slide productSlider" data-ride="carousel" data-interval="false">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner padHS " role="listbox">
+            <!-- Items -->
+            <?php $i = 1; ?>
+            <?php foreach ($collection as $newPro) { ?>
+                <?php if ($i % 4 == 1) { ?>
+                    <div class="item <?= ($i == 1) ? ' active' : '' ?>">
+                    <div class="row">
+                <?php } ?>
+
+                <div class="HS-item-Resp">
+                    <div class="HS-item-wrap">
+                        <a href="<?= $newPro->getProductUrl() ?>">
+                            <?php $label = ($newPro->getIsSale()) ? "isSaleLB ":"" ?>
+                            <?php $label = $label . (($newPro->getIsNew()) ? "isNewLB ":""); ?>
+                            <div class="img-resp img150 <?= $label ?>">
+                                <img src="<?= $mediaUrl . 'catalog/product' . $newPro->getThumbnail() ?>"/>
+                            </div>
+                            <p class="titPSlide"><?= $newPro->getName() ?></p>
+                            <p class="pricePSlide"><?= "$" . number_format($newPro->getPrice(), 2) ?></p>
+                        </a>
+                    </div>
+                </div>
+                <?php if ($i % 4 == 0 || $i == $collection->getSize()) { ?>
+                    </div>
+                    </div>
+                <?php } ?>
+                <?php $i++; ?>
+            <?php } ?>
+        </div>
+        <!-- Controls -->
+        <a href="#newProductHS" role="button" data-slide="prev">
+            <div class="prevButtonWrap slideCtr" aria-hidden="true">
+                <img src="<?= $mediaUrl ?>images/icon/pLeft.png"/>
+            </div>
+        </a>
+        <a href="#newProductHS" role="button" data-slide="next">
+            <div class="nextButtonWrap slideCtr" aria-hidden="true">
+                <img src="<?= $mediaUrl ?>images/icon/pRight.png"/>
+            </div>
+        </a>
+    </div>
+    <div class="clearfix pad100"></div>
+<?php } ?>
 
 </div>

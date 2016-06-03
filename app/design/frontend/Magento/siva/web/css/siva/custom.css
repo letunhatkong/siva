@@ -35,6 +35,10 @@ a {
     padding-bottom: 100%;
 }
 
+.img150 {
+    padding-bottom: 150%;
+}
+
 .img70 {
     padding-bottom: 70%;
 }
@@ -547,3 +551,107 @@ li.authorization-link > a > span {
 /* #Search */
 
 /* # Header */
+
+/* Slider Home */
+.productSlider {
+    padding: 0 40px;
+}
+.carousel.slide .slideCtr {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 40px;
+}
+.carousel.slide .slideCtr.prevButtonWrap {
+   left: 0;
+}
+.carousel.slide .slideCtr.nextButtonWrap {
+    right: 0;
+}
+.carousel.slide .slideCtr > img {
+    position: absolute;
+    top: 50%; left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.titPSlide {
+    text-align: center;
+    color: #3f3f3f;
+    padding: 15px 0;
+    margin: 0;
+}
+.pricePSlide {
+    text-align: center;
+    color: #3f3f3f;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+.isSaleLB:before, .isSaleLB::before {
+    content: '\00a0\00a0\00a0 SALE';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 1;
+    text-align: left;
+    line-height: 130px;
+    width: 0;
+    height: 0;
+    margin: 0;
+    border-right: 80px solid transparent;
+    border-bottom: 80px solid #000;
+}
+.isNewLB:after, .isNewLB::after {
+    content: '\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0 NEW';
+    top: 0;
+    right: 0;
+    position: absolute;
+    background: transparent;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: right;
+    z-index: 1;
+    line-height: 30px;
+    width: 0;
+    height: 0;
+    margin: 0;
+    border-right: 80px solid #000;
+    border-bottom: 80px solid transparent;
+
+}
+p.headHome {
+    text-align: center;
+    font-size: 30px;
+    margin: 0;
+    padding: 0 0 30px;
+}
+
+.productSlider .row > .HS-item-Resp {
+    padding: 10px;
+    float: left;
+    margin: 0 0 20px;
+    width: 25%;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 980px ) {
+    .productSlider .row > .HS-item-Resp {
+        width: 50%;
+    }
+    .productSlider .row > .HS-item-Resp:nth-child(2n+1) {
+        clear: both;
+    }
+}
+@media only screen and (max-width: 479px ) {
+    .productSlider .row > .HS-item-Resp {
+        width: 100%;
+    }
+}
+/* # Slider Home */
