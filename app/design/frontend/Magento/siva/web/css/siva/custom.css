@@ -546,6 +546,7 @@ li.authorization-link > a > span {
     left: 0;
     padding: 0;
 }
+
 #search_mini_form .action.search::before {
     font-size: 26px;
     vertical-align: middle;
@@ -553,6 +554,7 @@ li.authorization-link > a > span {
     color: transparent;
     width: 20px;
 }
+
 /* #Search */
 
 /* # Header */
@@ -561,33 +563,40 @@ li.authorization-link > a > span {
 .productSlider {
     padding: 0 40px;
 }
+
 .carousel.slide .slideCtr {
     position: absolute;
     top: 0;
     height: 100%;
     width: 40px;
 }
+
 .carousel.slide .slideCtr.prevButtonWrap {
-   left: 0;
+    left: 0;
 }
+
 .carousel.slide .slideCtr.nextButtonWrap {
     right: 0;
 }
+
 .carousel.slide .slideCtr > img {
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
 .titPSlide {
     text-align: center;
     color: #3f3f3f;
     padding: 15px 0;
     margin: 0;
 }
+
 .pricePSlide {
     text-align: center;
     color: #3f3f3f;
@@ -595,6 +604,7 @@ li.authorization-link > a > span {
     margin: 0;
     font-weight: bold;
 }
+
 .isSaleLB:before, .isSaleLB::before {
     content: '\00a0\00a0\00a0 SALE';
     position: absolute;
@@ -613,6 +623,7 @@ li.authorization-link > a > span {
     border-right: 80px solid transparent;
     border-bottom: 80px solid #000;
 }
+
 .isNewLB:after, .isNewLB::after {
     content: '\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0 NEW';
     top: 0;
@@ -632,6 +643,7 @@ li.authorization-link > a > span {
     border-bottom: 80px solid transparent;
 
 }
+
 p.headHome {
     text-align: center;
     font-size: 30px;
@@ -650,15 +662,18 @@ p.headHome {
     .productSlider .row > .HS-item-Resp {
         width: 50%;
     }
+
     .productSlider .row > .HS-item-Resp:nth-child(2n+1) {
         clear: both;
     }
 }
+
 @media only screen and (max-width: 479px ) {
     .productSlider .row > .HS-item-Resp {
         width: 100%;
     }
 }
+
 /* # Slider Home */
 
 @media only screen and (max-width: 767px) {
@@ -673,10 +688,12 @@ p.headHome {
     margin: 0;
     padding: 0;
 }
+
 .category-description {
     margin: 0;
     padding: 20px 0;
 }
+
 .filter .block-subtitle {
     border-bottom: 1px solid #ccc;
     font-size: 14px;
@@ -685,12 +702,14 @@ p.headHome {
     color: #222;
     text-transform: uppercase;
 }
+
 .filter-options-content {
     margin: 0;
     padding: 0;
 }
 
 .filter-options-title {
-     padding: 10px 40px 0 0;
- }
+    padding: 10px 40px 0 0;
+}
+
 /* # Category page */
