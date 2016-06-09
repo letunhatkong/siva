@@ -20,6 +20,16 @@ $_productCollection = $block->getLoadedProductCollection();
 $_helper = $this->helper('Magento\Catalog\Helper\Output');
 ?>
 
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$formKey = $_objectManager->get('Magento\Checkout\Block\Onepage')->getFormKey();
+$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$currentStore = $storeManager->getStore();
+$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+?>
+
 <?php if (!$_productCollection->count()): ?>
     <div class="message info empty"><div><?= __('We can\'t find products matching the selection.') ?></div></div>
 <?php else: ?>
@@ -62,9 +72,40 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                     <?php $label = $_product->getIsSale() ? "isSalePr ":"";
                         $label .= $_product->getIsNew() ? "isNewPr":"";
                     ?>
-                    <a href="<?= $_product->getProductUrl() ?>" class="product photo product-item-photo <?= $label ?>" tabindex="-1">
-                        <?= $productImage->toHtml(); ?>
-                    </a>
+
+                    <!--  Hover - Quick View -->
+                    <?php $addCart = $block->getAddToCartPostParams($_product); ?>
+
+                    <div class="hoverProductWrapper img-resp img150 <?= $label ?>">
+                        <div class="hoverProduct">
+                            <div class="parentTable">
+                                <div class="cellTable">
+                                    <a href="javascript:void(0);" class="list-quickView"
+                                          data-title="<?= $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"
+                                          data-url="<?= $_product->getProductUrl() ?>"
+                                          data-sku="<?= $_product->getSku() ?>"
+                                          data-img="<?= $mediaUrl . 'catalog/product'. $_product->getImage() ?>"
+                                          data-price="<?= number_format((float)$_product->getPrice(), 2, '.', '')  ?>"
+                                          data-des="<?= $_product->getDescription()?>"
+                                          data-action="<?= $addCart['action'] ?>"
+                                          data-product="<?= $addCart['data']['product'] ?>"
+                                          data-name="<?=  Action::PARAM_NAME_URL_ENCODED ?>"
+                                          data-name-val="<?= $addCart['data'][Action::PARAM_NAME_URL_ENCODED];  ?>"
+                                          data-form-key='<?= $formKey ?>'
+                                    >
+                                        <div class="quickView"><span>Quick View</span></div>
+                                    </a>
+                                    <a href="<?= $_product->getProductUrl() ?>">
+                                        <div class="viewProduct">View Product Detail</div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <img src="<?= $productImage->getImageUrl() ?>" />
+                    </div>
+
+
                     <div class="product details product-item-details">
                         <?php
                             $_productNameStripped = $block->stripTags($_product->getName(), null, true);
@@ -151,4 +192,46 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
         }
         </script>
     <?php endif; ?>
+
+    <script type="text/javascript">
+        require(['jquery', 'jquery/ui'], function ($) {
+            $(document).ready(function () {
+                // Click Quick View
+                $('.list-quickView').click(function(){
+                    var title = $(this).attr("data-title"),
+                        url = $(this).attr("data-url"),
+                        img = $(this).attr("data-img"),
+                        sku = $(this).attr("data-sku"),
+                        price = $(this).attr("data-price"),
+                        des = $(this).attr("data-des");
+
+                    var action = $(this).attr("data-action"),
+                        productId = $(this).attr("data-product"),
+                        name = $(this).attr("data-name"),
+                        nameVal = $(this).attr("data-name-val"),
+                        formKey = $(this).attr("data-form-key");
+
+                    $('#imgQuickView').attr("src",img);
+                    $('#titQuickView').attr("href",url);
+                    $('#titQuickView').text(title);
+                    $('#skuQuickView').text("SKU: "+sku);
+                    $('#priceQuickView').text('$ '+price);
+                    $('#desQuickView').html(des);
+
+                    $('#addToCartQuickView > form').attr("action",action);
+                    $('#addToCartQuickView input.productWV').val(productId);
+                    $('#addToCartQuickView input.uenc').attr("name",name);
+                    $('#addToCartQuickView input.uenc').val(nameVal);
+                    $('#addToCartQuickView input.formKeyWV').val(formKey);
+                    $('#viewDetailId').attr("href",url);
+
+                    $('.containerPopUpWrap').addClass("open");
+                });
+                // Click close pop-up quickView
+                $('#closeQuickViewAction').click(function() {
+                    $('.containerPopUpWrap').removeClass("open");
+                })
+            });
+        });
+    </script>
 <?php endif; ?>

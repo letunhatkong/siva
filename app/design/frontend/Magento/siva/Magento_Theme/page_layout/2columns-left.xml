@@ -16,4 +16,9 @@
         </container>
     </referenceContainer>
     <move element="breadcrumbs" destination="div.sidebar.main" before="-"/>
+
+    <!-- Quick View -->
+    <container name="quick-view.wrapper" label="Quick View Product" htmlTag="div" htmlId="quickViewWrap" >
+        <block class="Magento\Framework\View\Element\Template" name="quick-view" template="Magento_Theme::html/quickView.phtml" />
+    </container>
 </layout>
