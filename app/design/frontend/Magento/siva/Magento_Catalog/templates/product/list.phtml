@@ -85,7 +85,7 @@ $mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_
                                           data-url="<?= $_product->getProductUrl() ?>"
                                           data-sku="<?= $_product->getSku() ?>"
                                           data-img="<?= $mediaUrl . 'catalog/product'. $_product->getImage() ?>"
-                                          data-price="<?= number_format((float)$_product->getPrice(), 2, '.', '')  ?>"
+                                          data-price="<?= number_format((float)$_product->getFinalPrice(), 2, '.', '')  ?>"
                                           data-des="<?= $_product->getDescription()?>"
                                           data-action="<?= $addCart['action'] ?>"
                                           data-product="<?= $addCart['data']['product'] ?>"
@@ -214,7 +214,7 @@ $mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_
                     $('#imgQuickView').attr("src",img);
                     $('#titQuickView').attr("href",url);
                     $('#titQuickView').text(title);
-                    $('#skuQuickView').text("SKU: "+sku);
+                    $('#skuQuickView').text("Model: "+sku);
                     $('#priceQuickView').text('$ '+price);
                     $('#desQuickView').html(des);
 
