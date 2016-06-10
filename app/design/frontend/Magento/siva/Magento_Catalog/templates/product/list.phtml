@@ -21,8 +21,6 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
 ?>
 
 <?php
-$_productCollection = $block->getLoadedProductCollection();
-$_helper = $this->helper('Magento\Catalog\Helper\Output');
 $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $formKey = $_objectManager->get('Magento\Checkout\Block\Onepage')->getFormKey();
 $storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');

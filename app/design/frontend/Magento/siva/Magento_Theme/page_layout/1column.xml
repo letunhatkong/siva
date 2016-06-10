@@ -12,4 +12,6 @@
         <container name="page.top" as="page_top" label="After Page Header" after="header.container"/>
         <container name="footer-container" as="footer" before="before.body.end" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer" />
     </referenceContainer>
+
+    <move element="breadcrumbs" destination="main.content" before="-"/>
 </layout>

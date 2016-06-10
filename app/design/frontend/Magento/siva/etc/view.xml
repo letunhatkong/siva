@@ -78,20 +78,20 @@
             </image>
             <image id="product_page_image_large" type="image"/>
             <image id="product_page_image_medium" type="image">
-                <width>500</width>
-                <height>750</height>
+                <width>600</width>
+                <height>900</height>
             </image>
             <image id="product_page_image_small" type="thumbnail">
                 <width>100</width>
                 <height>150</height>
             </image>
             <image id="product_page_main_image" type="image">
-                <width>500</width>
-                <height>750</height>
+                <width>600</width>
+                <height>900</height>
             </image>
             <image id="product_page_main_image_default" type="image">
-                <width>500</width>
-                <height>750</height>
+                <width>600</width>
+                <height>900</height>
             </image>
             <image id="product_page_more_views" type="thumbnail">
                 <width>100</width>
