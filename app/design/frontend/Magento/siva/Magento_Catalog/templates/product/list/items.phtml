@@ -188,13 +188,13 @@ switch ($type = $block->getType()) {
                             <a href="<?= $newPro->getProductUrl() ?>">
                                 <?php $label = ($newPro->getIsSale()) ? "isSaleLB ":"" ?>
                                 <?php $label = $label . (($newPro->getIsNew()) ? "isNewLB ":""); ?>
-                                <div class="img-resp img150 <?= $label ?>">
+                                <div class="img-resp img133 <?= $label ?>">
                                     <img class="fullHeight" src="<?= $mediaUrl . 'catalog/product' . $newPro->getThumbnail() ?>"/>
                                 </div>
                                 <p class="titPSlide"><?= $newPro->getName() ?></p>
                                 <p class="pricePSlide">
                                     <?= "$" . number_format($newPro->getFinalPrice(), 2) ?>
-                                    <?php if ($newPro->getFinalPrice() !== $newPro->getPrice()) { ?>
+                                    <?php if ($newPro->getFinalPrice() != $newPro->getPrice()) { ?>
                                         <span class="oldPrice"><?= "$" . number_format($newPro->getPrice(), 2) ?></span>
                                     <?php } ?>
                                 </p>

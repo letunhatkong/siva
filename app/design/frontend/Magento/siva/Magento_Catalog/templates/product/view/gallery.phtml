@@ -1,0 +1,60 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+<div class="gallery-placeholder _block-content-loading" data-gallery-role="gallery-placeholder">
+    <div data-role="loader" class="loading-mask">
+        <div class="loader">
+            <img src="<?= $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                 alt="<?= __('Loading...') ?>">
+        </div>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "[data-gallery-role=gallery-placeholder]": {
+            "mage/gallery/gallery": {
+                "mixins":["magnifier/magnify"],
+                "magnifierOpts": <?= $block->getMagnifier(); ?>,
+                "data": <?= $block->getGalleryImagesJson(); ?>,
+                "options": {
+                    "nav": "<?= $block->getVar("gallery/nav"); ?>",
+                    "loop": <?= $block->getVar("gallery/loop"); ?>,
+                    "keyboard": <?= $block->getVar("gallery/keyboard"); ?>,
+                    "arrows": <?= $block->getVar("gallery/arrows"); ?>,
+                    "allowfullscreen": <?= $block->getVar("gallery/allowfullscreen"); ?>,
+                    "showCaption": <?= $block->getVar("gallery/caption"); ?>,
+                    "width": <?= $block->getImageAttribute('product_page_image_medium', 'width'); ?>,
+                    "thumbwidth": <?= $block->getImageAttribute('product_page_image_small', 'width'); ?>,
+                    "thumbheight": <?= $block->getImageAttribute('product_page_image_small', 'height') ?: $block->getImageAttribute('product_page_image_small', 'width'); ?>,
+                    "height": <?= $block->getImageAttribute('product_page_image_medium', 'height') ?: $block->getImageAttribute('product_page_image_medium', 'width'); ?>,
+                    "transitionduration": <?= $block->getVar("gallery/transition/duration"); ?>,
+                    "transition": "<?= $block->getVar("gallery/transition/effect"); ?>",
+                    "navarrows": <?= $block->getVar("gallery/navarrows"); ?>,
+                    "navtype": "<?= $block->getVar("gallery/navtype"); ?>",
+                    "navdir": "<?= $block->getVar("gallery/navdir"); ?>"
+                },
+                "fullscreen": {
+                    "nav": "<?= $block->getVar("gallery/fullscreen/nav"); ?>",
+                    "loop": <?= $block->getVar("gallery/fullscreen/loop"); ?>,
+                    "navdir": "<?= $block->getVar("gallery/fullscreen/navdir"); ?>",
+                    "arrows": <?= $block->getVar("gallery/fullscreen/arrows"); ?>,
+                    "showCaption": <?= $block->getVar("gallery/fullscreen/caption"); ?>,
+                    "transitionduration": <?= $block->getVar("gallery/fullscreen/transition/duration"); ?>,
+                    "transition": "<?= $block->getVar("gallery/fullscreen/transition/effect"); ?>"
+                },
+                "breakpoints": <?= $block->getBreakpoints(); ?>
+            }
+        }
+    }
+</script>

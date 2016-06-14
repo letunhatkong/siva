@@ -21,7 +21,7 @@ $_sub = $sa->getAllBannerByType($sa::TYPE_SUB_BANNER);
         <div class="carousel-inner" role="listbox">
             <?php $i = 1; ?>
             <?php foreach ($banners as $bn) { ?>
-                <div class="ef-dl item <?= ($i == 1) ? 'active' : '' ?>">
+                <div class="item <?= ($i == 1) ? 'active' : '' ?>">
                     <img src="<?= $mediaUrl . $bn['image'] ?>"/>
                 </div>
                 <?php $i++; ?>
@@ -57,7 +57,7 @@ $_sub = $sa->getAllBannerByType($sa::TYPE_SUB_BANNER);
     <?php foreach ($_sub as $item) { ?>
         <div class="col-xs-6 col-sm-4 subBannerItem">
             <a href="<?= $item['link'] ?>">
-                <div class="img-resp img70">
+                <div class="img-resp img77">
                     <img class="" src="<?= $mediaUrl . $item['image'] ?>"/>
                 </div>
             </a>
@@ -76,18 +76,6 @@ $collection = $productCollection->create()
     ->setOrder('created_at', 'DESC')
     ->setPageSize(12)// Limit product
     ->load();
-
-foreach ($collection as $product) {
-    $item = array(
-        'getId' => $product->getId(),
-        'getName' => $product->getName(),
-        'getPrice' => floatval($product->getPrice()),
-        'priceString' => "$" . number_format($product->getPrice(), 2),
-        'getStatus' => $product->getStatus(),
-        'thumbnail' => $mediaUrl . 'catalog/product' . $product->getThumbnail(),
-        'getProductUrl' => $product->getProductUrl(),
-    );
-}
 ?>
 
 <?php if (isset($collection) && $collection->getSize() > 0) { ?>
@@ -109,11 +97,16 @@ foreach ($collection as $product) {
                         <a href="<?= $newPro->getProductUrl() ?>">
                             <?php $label = ($newPro->getIsSale()) ? "isSaleLB ":"" ?>
                             <?php $label = $label . (($newPro->getIsNew()) ? "isNewLB ":""); ?>
-                            <div class="img-resp img150 <?= $label ?>">
+                            <div class="img-resp img133 <?= $label ?>">
                                 <img src="<?= $mediaUrl . 'catalog/product' . $newPro->getThumbnail() ?>"/>
                             </div>
                             <p class="titPSlide"><?= $newPro->getName() ?></p>
-                            <p class="pricePSlide"><?= "$" . number_format($newPro->getPrice(), 2) ?></p>
+                            <p class="pricePSlide">
+                                <?= "$" . number_format($newPro->getFinalPrice(), 2) ?>
+                                <?php if ($newPro->getFinalPrice() != $newPro->getPrice()) { ?>
+                                    <span class="oldPrice"><?= "$" . number_format($newPro->getPrice(), 2) ?></span>
+                                <?php } ?>
+                            </p>
                         </a>
                     </div>
                 </div>
