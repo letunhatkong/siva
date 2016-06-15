@@ -132,6 +132,36 @@ a, a:visited, .alink:visited {
     margin: 0 0 20px;
 }
 
+.breadcrumbs li.item > strong {
+    font-size: 9px;
+}
+
+.breadcrumbs li.item a {
+    color: #000;
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.breadcrumbs .item:hover > a {
+    font-weight: bold;
+    text-decoration: underline !important;
+}
+
+.breadcrumbs .item:not(:last-child):after {
+    -webkit-font-smoothing: antialiased;
+    font-size: 10px;
+    line-height: 17px;
+    content: '/';
+    margin: 0 2px;
+    vertical-align: top;
+    display: inline-block;
+    font-weight: bold;
+    overflow: hidden;
+    text-align: center;
+    color: #000;
+}
+
+
 /* Footer */
 .page-footer {
     background: #e1e1e1;
