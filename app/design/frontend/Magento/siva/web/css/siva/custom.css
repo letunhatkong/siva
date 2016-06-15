@@ -10,7 +10,7 @@ p {
     margin: 0;
 }
 
-a {
+a, a:visited, .alink:visited {
     color: #595959;
     text-decoration: none !important;
 }
@@ -639,7 +639,7 @@ li.authorization-link > a > span {
     font-weight: bold;
 }
 
-.isSaleLB:before, .isSaleLB::before {
+.isSaleLB:before, .isSaleLB::before, .isSalePr:before {
     content: '\00a0\00a0 SALE';
     position: absolute;
     left: 0;
@@ -658,7 +658,7 @@ li.authorization-link > a > span {
     border-bottom: 60px solid #000;
 }
 
-.isNewLB:after, .isNewLB::after {
+.isNewLB:after, .isNewLB::after, .isNewPr:after {
     content: '\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0 NEW';
     top: 0;
     right: 0;
@@ -731,6 +731,10 @@ p.headHome {
     padding: 0;
 }
 
+.navigation .level0.active > .level-top, .navigation .level0.has-active > .level-top {
+    border: none;
+}
+
 .category-description {
     margin: 0;
     padding: 20px 0;
@@ -745,6 +749,15 @@ p.headHome {
     padding: 5px 5px 4px;
     outline: 0;
     box-shadow: none;
+}
+
+.block-content.filter-content a {
+    font-size: 12px;
+}
+
+.block-content.filter-content a:hover {
+    color: initial;
+    text-decoration: underline !important;
 }
 
 .filter .block-subtitle {
@@ -852,12 +865,13 @@ p.headHome {
 }
 
 .quickView {
-    background: #000;
-    color: #fff;
+    background: transparent;
+    color: #000;
     text-align: center;
     width: 120px;
     margin: 0 auto;
     padding: 10px 0;
+    border: 1px solid #000;
 }
 
 .viewProduct {
@@ -869,50 +883,36 @@ p.headHome {
     border: 1px solid #000;
 }
 
-.isSalePr:before {
-    content: '\00a0\00a0\00a0 SALE';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: transparent;
+.quickView:hover, .viewProduct:hover {
+    background: #000;
     color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    z-index: 1;
-    text-align: left;
-    line-height: 130px;
-    width: 0;
-    height: 0;
-    margin: 0;
-    border-right: 80px solid transparent;
-    border-bottom: 80px solid #000;
-}
-
-.isNewPr:after {
-    content: '\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0 NEW';
-    top: 0;
-    right: 0;
-    position: absolute;
-    background: transparent;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: right;
-    z-index: 1;
-    line-height: 30px;
-    width: 0;
-    height: 0;
-    margin: 0;
-    border-right: 80px solid #000;
-    border-bottom: 80px solid transparent;
 }
 
 .products.wrapper + .toolbar .pages {
     width: 100%;
+    text-align: right;
+}
+
+.pages .item {
+    font-size: 12px;
+    letter-spacing: normal;
+    line-height: 32px;
+    margin: 0 5px;
+    display: inline-block;
 }
 
 .pages a.page {
     color: #595959;
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.pages a.page:visited, .pages a.page:hover {
+    color: #595959;
+}
+
+.pages .item:hover a.page, .pages .item.current .label + span {
+    text-decoration: underline !important;
 }
 
 .page-products .products-grid .product-items {
@@ -954,10 +954,14 @@ p.headHome {
     margin: 0 0 20px;
 }
 
+.block.filter .filter-title strong {
+    font-size: 14px;
+}
+
 .filter-options .filter-options-title {
     font-weight: normal;
     line-height: 1.4;
-    font-size: 16px;
+    font-size: 14px;
     margin: 0 0 10px;
     word-break: break-all;
     border-top: 1px solid #ccc;
