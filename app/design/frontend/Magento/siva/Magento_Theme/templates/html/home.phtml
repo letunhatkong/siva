@@ -95,18 +95,19 @@ $collection = $productCollection->create()
                 <div class="HS-item-Resp">
                     <div class="HS-item-wrap">
                         <a href="<?= $newPro->getProductUrl() ?>">
-                            <?php $label = ($newPro->getIsSale()) ? "isSaleLB ":"" ?>
-                            <?php $label = $label . (($newPro->getIsNew()) ? "isNewLB ":""); ?>
+                            <?php $label = ($newPro->getFinalPrice() < $newPro->getPrice()) ? "isSaleLB ":"" ?>
+                            <?php $label = $label . ((time() - strtotime($newPro->getCreatedAt()) < 1209600) ? "isNewLB ":""); ?>
                             <div class="img-resp img133 <?= $label ?>">
                                 <img src="<?= $mediaUrl . 'catalog/product' . $newPro->getThumbnail() ?>"/>
                             </div>
                             <p class="titPSlide"><?= $newPro->getName() ?></p>
                             <p class="pricePSlide">
                                 <?= "$" . number_format($newPro->getFinalPrice(), 2) ?>
-                                <?php if ($newPro->getFinalPrice() != $newPro->getPrice()) { ?>
+                                <?php if ($newPro->getFinalPrice() < $newPro->getPrice()) { ?>
                                     <span class="oldPrice"><?= "$" . number_format($newPro->getPrice(), 2) ?></span>
                                 <?php } ?>
                             </p>
+                            <p><?= $newPro->getCreatedAt() ?></p>
                         </a>
                     </div>
                 </div>

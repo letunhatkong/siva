@@ -186,8 +186,8 @@ switch ($type = $block->getType()) {
                     <div class="HS-item-Resp">
                         <div class="HS-item-wrap">
                             <a href="<?= $newPro->getProductUrl() ?>">
-                                <?php $label = ($newPro->getIsSale()) ? "isSaleLB ":"" ?>
-                                <?php $label = $label . (($newPro->getIsNew()) ? "isNewLB ":""); ?>
+                                <?php $label = ($newPro->getFinalPrice() < $newPro->getPrice()) ? "isSaleLB ":"" ?>
+                                <?php $label = $label . ((time() - strtotime($newPro->getCreatedAt()) < 1209600) ? "isNewLB ":""); ?>
                                 <div class="img-resp img133 <?= $label ?>">
                                     <img class="fullHeight" src="<?= $mediaUrl . 'catalog/product' . $newPro->getThumbnail() ?>"/>
                                 </div>

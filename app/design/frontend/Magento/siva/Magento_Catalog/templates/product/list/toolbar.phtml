@@ -18,7 +18,9 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
 <?php if ($block->getCollection()->getSize()): ?>
     <div class="toolbar toolbar-products" data-mage-init='<?= $block->getWidgetOptionsJson(); ?>'>
         <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
+        <a href="?product_list_limit=all"><span class="viewAll">VIEW ALL</span></a>
         <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/limiter.phtml')) ?>
         <?php echo $block->getPagerHtml() ?>
+
     </div>
 <?php endif ?>

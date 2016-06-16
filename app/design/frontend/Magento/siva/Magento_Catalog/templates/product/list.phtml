@@ -66,9 +66,9 @@ $mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_
                             . 'top:' . $productImage->getHeight() . 'px;"';
                     }
                     ?>
-                    <?php // Product Image ?>
-                    <?php $label = $_product->getIsSale() ? "isSalePr ":"";
-                        $label .= $_product->getIsNew() ? "isNewPr":"";
+                    <?php // Product Image
+                        $label = ($_product->getFinalPrice() < $_product->getPrice()) ? "isSalePr ":"";
+                        $label .= ((time() - strtotime($_product->getCreatedAt()) < 1209600) ? "isNewPr ":"");
                     ?>
 
                     <!--  Hover - Quick View -->

@@ -161,7 +161,6 @@ a, a:visited, .alink:visited {
     color: #000;
 }
 
-
 /* Footer */
 .page-footer {
     background: #e1e1e1;
@@ -188,6 +187,8 @@ a, a:visited, .alink:visited {
 
 .cprFt {
     text-align: right;
+    font-size: 12px;
+    color: #737373;
 }
 
 .titFt {
@@ -809,8 +810,7 @@ p.headHome {
 }
 
 .page-products .toolbar .limiter {
-    display: block;
-    float: right;
+    display: none !important;
 }
 
 #sorter {
@@ -821,14 +821,6 @@ p.headHome {
     float: left;
     left: 0;
     padding: 0;
-}
-
-.products.wrapper ~ .toolbar .limiter {
-    display: none !important;
-}
-
-.products-grid .product-item-info .product-item-inner {
-
 }
 
 .products-grid .product-item-info:hover {
@@ -918,9 +910,26 @@ p.headHome {
     color: #fff;
 }
 
+.toolbar-products .pages {
+    display: block;
+    float: right;
+}
+
 .products.wrapper + .toolbar .pages {
-    width: 100%;
-    text-align: right;
+    float: right;
+}
+
+.viewAll {
+    font-size: 12px;
+    float: right;
+    line-height: 32px;
+    letter-spacing: normal;
+    margin: 0 0 0 10px;
+    font-weight: bold;
+}
+
+.viewAll:hover {
+    text-decoration: underline;
 }
 
 .pages .item {
