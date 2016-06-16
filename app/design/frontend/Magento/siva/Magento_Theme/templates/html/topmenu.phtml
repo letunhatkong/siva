@@ -17,6 +17,28 @@
 <?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
 <?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
 
+<?php
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); //instance of \Magento\Framework\App\ObjectManager
+$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$currentStore = $storeManager->getStore();
+$baseUrl = $currentStore->getBaseUrl();
+$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+?>
+
+<div class="topPartner visible-xs">
+    <p>SHOP OUR BRANDS</p>
+    <a href="#" >
+        <img src="<?= $mediaUrl ?>/images/home/tap_logo_siva.png" />
+    </a>
+    <a href="#" >
+        <img src="<?= $mediaUrl ?>/images/home/tap_logo_amfm.png" />
+    </a>
+    <a href="#" >
+        <img src="<?= $mediaUrl ?>/images/home/tap_logo_fof.png" />
+    </a>
+</div>
+
+
 <nav class="navigation" role="navigation" id="topMenuBar">
     <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
         <?= $_menu; ?>
