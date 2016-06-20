@@ -1491,6 +1491,10 @@ img.share-social {
     display: inline-block;
 }
 
+.detailInfoWrapper .content {
+    padding: 10px 0 0;
+}
+
 .detailInner {
     padding: 15px 20px;
     border: 1px solid #ccc;
@@ -1511,9 +1515,9 @@ img.share-social {
 .dropContent {
     position: relative;
     float: right;
-    top: -4px;
-    width: 30px;
-    height: 30px;
+    top: 0;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
     border: 1px solid;
     -webkit-border-radius:50%;
@@ -1522,7 +1526,7 @@ img.share-social {
 }
 
 .dropContent:before, .dropContent:after {
-    top: 10px;
+    top: 7px;
     right: 50%;
     border: solid transparent;
     content: " ";
@@ -1535,28 +1539,28 @@ img.share-social {
 .dropContent:before {
     border-color: transparent;
     border-top-color: #000;
-    border-width: 10px;
-    margin-right: -10px;
+    border-width: 7px;
+    margin-right: -7px;
 }
 .dropContent:after {
     border-color: transparent;
     border-top-color: #fff;
-    border-width: 8px;
-    margin-right: -8px;
+    border-width: 5px;
+    margin-right: -5px;
 }
 
 .dropContent.active:before {
     border-color: transparent;
     border-bottom-color: #000;
     top: auto;
-    bottom: 10px;
+    bottom: 7px;
 }
 
 .dropContent.active:after {
     border-color: transparent;
     border-bottom-color: #fff;
     top: auto;
-    bottom: 10px;
+    bottom: 7px;
 }
 
 /* Gallery Slider */
