@@ -45,8 +45,8 @@
                 <height>100</height>
             </image>
             <image id="gift_messages_checkout_small_image" type="small_image">
-                <width>75</width>
-                <height>75</height>
+                <width>60</width>
+                <height>80</height>
             </image>
             <image id="gift_messages_checkout_thumbnail" type="thumbnail">
                 <width>100</width>
@@ -157,8 +157,8 @@
                 <height>100</height>
             </image>
             <image id="sendfriend_small_image" type="small_image">
-                <width>75</width>
-                <height>75</height>
+                <width>60</width>
+                <height>80</height>
             </image>
             <image id="shared_wishlist_email" type="small_image">
                 <width>135</width>

@@ -10,9 +10,9 @@
     <body>
         <move element="page.main.title" destination="product.info.main" before="-"/>
         <move element="product.info.details" destination="product.info.main" after="-"/>
-        <move element="product.info.type" destination="product.info.main" after="-"/>
+        <!--<move element="product.info.type" destination="product.info.main" before="product.info"/>-->
 
-        <referenceBlock name="product.info.sku" remove="true" />
+        <!--<referenceBlock name="product.info.sku" remove="true" />-->
         <referenceBlock name="product.info.review" remove="true" />
 
     </body>

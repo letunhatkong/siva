@@ -1,40 +1,43 @@
 <?php
-/**
- * Copyright © 2016 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
-
-// @codingStandardsIgnoreFile
-
+$product = $block->getProduct();
 ?>
-<?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')):?>
-    <div class="product info detailed">
-        <?php $layout = $block->getLayout(); ?>
-        <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
-            <?php foreach ($detailedInfoGroup as $name):?>
-                <?php
-                    $html = $layout->renderElement($name);
-                    if (!trim($html)) {
-                        continue;
-                    }
-                    $alias = $layout->getElementAlias($name);
-                    $label = $block->getChildData($alias, 'title');
-                ?>
-                <div class="data item title"
-                     aria-labeledby="tab-label-<?= $alias;?>-title"
-                     data-role="collapsible" id="tab-label-<?= $alias;?>">
-                    <a class="data switch"
-                       tabindex="-1"
-                       data-toggle="switch"
-                       href="#<?= $alias; ?>"
-                       id="tab-label-<?= $alias;?>-title">
-                        <?= $label; ?>
-                    </a>
-                </div>
-                <div class="data item content" id="<?= $alias; ?>" data-role="content">
-                    <?= $html; ?>
-                </div>
-            <?php endforeach;?>
+
+<div class="detailInfoWrapper">
+    <div class="detailInner">
+        <div class="detailHead">
+            <span>Editor's Review</span><div class="dropContent"></div>
+        </div>
+        <div class="content hidden">
+            <?= $product->getDescription() ?>
         </div>
     </div>
-<?php endif; ?>
+    <div class="detailInner">
+        <div class="detailHead"><span>Detail</span><div class="dropContent"></div></div>
+        <div class="content hidden">
+            <?= $product->getDescription() ?>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui'], function($){
+        $(document).ready(function($) {
+            $(window).load(function() {
+                $('.detailHead').click(function(){
+                    if ($(this).find('.dropContent').hasClass('active')) {
+                        $(this).parent().find('.content').addClass("hidden");
+                        $(this).find('.dropContent').removeClass("active");
+                    } else {
+                        $(this).parent().parent().find('.content').addClass("hidden");
+                        $(this).parent().parent().find('.dropContent').removeClass("active");
+                        $(this).parent().find('.content').removeClass("hidden");
+                        $(this).find('.dropContent').addClass("active");
+                    }
+                })
+            });
+        });
+    });
+</script>
+
+

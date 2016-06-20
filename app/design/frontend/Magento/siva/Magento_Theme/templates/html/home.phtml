@@ -73,6 +73,7 @@ $productCollection = $_objectManager->create('Magento\Catalog\Model\ResourceMode
 $collection = $productCollection->create()
     ->addAttributeToSelect('*')
     ->addFieldToFilter("status", "1")
+    ->addFieldToFilter("type_id", "configurable")
     ->setOrder('created_at', 'DESC')
     ->setPageSize(12)// Limit product
     ->load();

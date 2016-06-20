@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php $_product = $block->getProduct();
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$currentStore = $storeManager->getStore();
+$baseUrl = $currentStore->getBaseUrl();
+$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$linkUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_LINK);
+?>
+
+<?php if ($block->canEmailToFriend()): ?>
+    <a href="<?= $this->helper('Magento\Catalog\Helper\Product')->getEmailToFriendUrl($_product) ?>">
+        <!-- class="share-social" -->
+        <img class="share-social" src="<?= $mediaUrl ?>/images/icon/mail.png" />
+    </a>
+<?php endif; ?>
+
+<a href="#">
+    <img class="share-social" src="<?= $mediaUrl ?>/images/icon/fb.png" />
+</a>
+
+<a href="#" class="share-social">
+    <img class="share-social" src="<?= $mediaUrl ?>/images/icon/twitter.png" />
+</a>

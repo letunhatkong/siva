@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php /** @var $block \Magento\Swatches\Block\Product\Renderer\Configurable */ ?>
+
+<div class="swatch-opt"></div>
+<a href="/size-chart"><div><span>* Size Chart</span></div></a>
+<script>
+    require(["jquery", "jquery/ui", "swatchRenderer"], function ($) {
+        $('.swatch-opt').SwatchRenderer({
+            jsonConfig: <?= $swatchOptions = $block->getJsonConfig(); ?>,
+            jsonSwatchConfig: <?= $swatchOptions = $block->getJsonSwatchConfig(); ?>,
+            mediaCallback: '<?= $block->getMediaCallback() ?>'
+        });
+    });
+</script>
+
+<div class="lineQuickView"></div>
+
