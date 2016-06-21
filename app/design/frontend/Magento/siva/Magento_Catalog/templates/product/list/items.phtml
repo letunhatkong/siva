@@ -193,9 +193,17 @@ switch ($type = $block->getType()) {
                                 </div>
                                 <p class="titPSlide"><?= $newPro->getName() ?></p>
                                 <p class="pricePSlide">
-                                    <?= "$" . number_format($newPro->getFinalPrice(), 2) ?>
-                                    <?php if ($newPro->getFinalPrice() != $newPro->getPrice()) { ?>
-                                        <span class="oldPrice"><?= "$" . number_format($newPro->getPrice(), 2) ?></span>
+                                    <?php
+                                    if ($newPro->getTypeId() == 'configurable') {
+                                        $price = ($newPro->getMinPrice() == $newPro->getMaxPrice()) ?
+                                            "$" . number_format($newPro->getMinPrice(), 2) :
+                                            "$".number_format($newPro->getMinPrice(), 2). " - $".number_format($newPro->getMaxPrice(), 2);
+                                        echo $price;
+                                    } else { ?>
+                                        <?= "$" . number_format($newPro->getFinalPrice(), 2) ?>
+                                        <?php if ($newPro->getFinalPrice() != $newPro->getPrice()) { ?>
+                                            <span class="oldPrice"><?= "$" . number_format($newPro->getPrice(), 2) ?></span>
+                                        <?php } ?>
                                     <?php } ?>
                                 </p>
                             </a>

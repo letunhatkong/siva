@@ -114,10 +114,21 @@ $mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_
                                 <?= $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
                             </a>
                         </strong>
-                        <?= $block->getReviewsSummaryHtml($_product, $templateType); ?>
-                        <?= $block->getProductPrice($_product) ?>
-                        <?= $block->getProductDetailsHtml($_product); ?>
+                        <!-- //= $block->getReviewsSummaryHtml($_product, $templateType); -->
 
+                        <!-- Price -->
+                        <?php if($_product->getTypeId() == 'configurable' ) {
+                            $price = ($_product->getMinPrice() == $_product->getMaxPrice()) ?
+                            "$" . number_format($_product->getMinPrice(), 2) :
+                            "$".number_format($_product->getMinPrice(), 2). " - $".number_format($_product->getMaxPrice(), 2);
+                        ?>
+                            <p class="pricePSlide"><?= $price ?></p>
+                        <?php } else {
+                            echo $block->getProductPrice($_product);
+                        } ?>
+                        <!-- # Price -->
+
+                        <?= $block->getProductDetailsHtml($_product); ?>
                         <div class="product-item-inner">
                             <div class="product actions product-item-actions"<?= strpos($pos, $viewMode . '-actions') ? $position : ''; ?>>
                                 <div class="actions-primary"<?= strpos($pos, $viewMode . '-primary') ? $position : ''; ?>>
