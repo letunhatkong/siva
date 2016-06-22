@@ -72,6 +72,10 @@
         </arguments>
     </referenceBlock>
 
+    <!-- Remove compare wish-list on left bar.-->
+    <referenceBlock name="catalog.compare.sidebar" remove="true" />
+    <referenceBlock name="wishlist_sidebar" remove="true" />
+
     <!-- footer -->
     <referenceBlock name="store_switcher" remove="true" />
     <referenceBlock name="footer_links" remove="true" />
