@@ -10,7 +10,9 @@
 </span>
 
 <div class="promoCode hidden-xs">
-    <div class="promoInner">FREE SHIPPING AVAILABLE! Enter Promo Code #777777</div>
+    <div class="promoInner">
+        <?= $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('promotion_info')->toHtml();?>
+    </div>
 </div>
 
 <?php if ($block->isHomePage()): ?>
@@ -31,5 +33,7 @@
 <?php endif ?>
 
 <div class="promoCode visible-xs">
-    <div class="promoInner">FREE SHIPPING AVAILABLE! Enter Promo Code #777777</div>
+    <div class="promoInner">
+        <?= $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('promotion_info')->toHtml();?>
+    </div>
 </div>
