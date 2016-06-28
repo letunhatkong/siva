@@ -69,13 +69,15 @@ $_sub = $sa->getAllBannerByType($sa::TYPE_SUB_BANNER);
 <!-- # Sub Banner  -->
 
 <?php // Get Latest Products
+$productModel = $_objectManager->get('Magento\Catalog\Model\Product');
+$parentProduct = $_objectManager->create('Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable');
 $productCollection = $_objectManager->create('Magento\Catalog\Model\ResourceModel\Product\CollectionFactory');
 $collection = $productCollection->create()
     ->addAttributeToSelect('*')
     ->addFieldToFilter("status", "1")
-    ->addFieldToFilter("type_id", "configurable")
+    ->addFieldToFilter("type_id", array('neq' => 'configurable'))
     ->setOrder('created_at', 'DESC')
-    ->setPageSize(12)// Limit product
+    ->setPageSize(12)
     ->load();
 ?>
 
@@ -93,9 +95,19 @@ $collection = $productCollection->create()
                     <div class="row">
                 <?php } ?>
 
+                <?php
+                $parUrl = false;
+                $parentId = $parentProduct->getParentIdsByChild($newPro->getId());
+                if (isset($parentId[0]) && $parentId[0] > 0) {
+                    $pId = $parentId[0];
+                    $parUrl = $productModel->load($pId)->getUrlKey();
+                    $parUrl = $baseUrl . $parUrl .".html";
+                }
+                ?>
+
                 <div class="HS-item-Resp">
                     <div class="HS-item-wrap">
-                        <a href="<?= $newPro->getProductUrl() ?>">
+                        <a href="<?= ($parUrl) ? $parUrl : $newPro->getProductUrl() ?>">
                             <?php $label = ($newPro->getFinalPrice() < $newPro->getPrice()) ? "isSaleLB ":"" ?>
                             <?php $label = $label . ((time() - strtotime($newPro->getCreatedAt()) < 1209600) ? "isNewLB ":""); ?>
                             <div class="img-resp img133 <?= $label ?>">
