@@ -7,7 +7,15 @@
 <?php /** @var $block \Magento\Swatches\Block\Product\Renderer\Configurable */ ?>
 
 <div class="swatch-opt"></div>
-<a href="/size-chart"><div><span>* Size Chart</span></div></a>
+<div class="clickSizeChart"><span>* Size Chart</span></div>
+<div id="sizeChartContent">
+    <div class="wrap">
+        <div id="closeSizeChart">( Close )</div>
+        <div class="content">
+            <?= $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('size_chart')->toHtml();?>
+        </div>
+    </div>
+</div>
 <script>
     require(["jquery", "jquery/ui", "swatchRenderer"], function ($) {
         $('.swatch-opt').SwatchRenderer({
@@ -19,4 +27,23 @@
 </script>
 
 <div class="lineQuickView"></div>
+
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui'], function($){
+        $(document).ready(function($) {
+            $(window).load(function() {
+                jQuery('.clickSizeChart > span').click(function(){
+                    if (jQuery('#sizeChartContent').hasClass("open")) {
+                        jQuery('#sizeChartContent').removeClass('open');
+                    } else {
+                        jQuery('#sizeChartContent').addClass('open');
+                    }
+                });
+                jQuery('#closeSizeChart').click(function(){
+                    jQuery('#sizeChartContent').removeClass('open');
+                })
+            });
+        });
+    });
+</script>
 
