@@ -558,6 +558,10 @@ li.ui-menu-item.all-category {
         min-width: 580px;
     }
 
+    .navigation .level0 .submenu a:hover, .navigation .level0 .submenu a.ui-state-focus {
+        background: #fff;
+    }
+
     #topMenuBar .level0 .submenu .submenu {
         top: auto !important;
         left: 0 !important;
