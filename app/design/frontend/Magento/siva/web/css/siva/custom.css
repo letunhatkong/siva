@@ -555,8 +555,7 @@ li.ui-menu-item.all-category {
 
 @media only screen and (min-width: 768px) {
     #topMenuBar .level0 .submenu {
-        min-width: 570px;
-        /*display: block !important;*/
+        min-width: 580px;
     }
 
     #topMenuBar .level0 .submenu .submenu {
@@ -585,6 +584,10 @@ li.ui-menu-item.all-category {
         height: 150px;
         right: 15px;
         top: 15px;
+    }
+
+    #topMenuBar .submenu li.level2 > a {
+        padding: 0 0 0 30px;
     }
 }
 
