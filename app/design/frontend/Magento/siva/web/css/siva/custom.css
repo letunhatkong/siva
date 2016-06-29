@@ -566,6 +566,7 @@ li.ui-menu-item.all-category {
         box-shadow: none;
         min-width: 0 !important;
         display: block !important;
+        padding: 0;
     }
 
     #topMenuBar .level0.submenu > li {
@@ -587,7 +588,16 @@ li.ui-menu-item.all-category {
     }
 
     #topMenuBar .submenu li.level2 > a {
-        padding: 0 0 0 30px;
+        font-weight: normal;
+    }
+
+    #topMenuBar .submenu a {
+        line-height: 24px;
+        padding: 0 0 0 20px;
+    }
+
+    #topMenuBar a:hover {
+        background: #fff;
     }
 }
 
