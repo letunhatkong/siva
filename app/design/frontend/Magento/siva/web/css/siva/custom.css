@@ -1750,8 +1750,8 @@ img.share-social {
 }
 
 .fotorama__nav--thumbs {
-    padding: 15px 0 0;
-    height: auto !important;
+    padding: 0;
+    height: 630px !important;
 }
 
 .fotorama__thumb-border,
@@ -1785,12 +1785,60 @@ img.share-social {
     height: auto;
 }
 
+.fotorama__nav-wrap--vertical.fotorama__nav-wrap {
+    position: relative;
+    float: left;
+    width: 99px;
+    height: 632px;
+    padding: 27px 0;
+}
+
+.fotorama__arr--disabled {
+    opacity: 1;
+}
+
+.fotorama__stage {
+    float: right;
+    width: calc(100% - 115px) !important;
+    padding-bottom: calc(134% - 153px) !important;
+    left: auto !important;
+    height: 0 !important;
+    line-height: 1 !important;
+}
+
+.fotorama__stage__shaft {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.fotorama__stage__frame .fotorama__img {
+    vertical-align: top;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
 .fotorama__nav__frame--thumb.fotorama__active > .fotorama__thumb {
     border: 1px solid #000;
 }
 
 .fotorama__nav--thumbs .fotorama__nav__frame {
-    padding: 12px !important;
+    padding: 6px 0 0 !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+.fotorama__nav-wrap--vertical .fotorama__nav__shaft .fotorama__nav__frame--thumb {
+    display: block;
+    padding-bottom: 6px !important;
+}
+
+.fotorama__nav-wrap--vertical .fotorama__thumb__arr--left, .fotorama__nav-wrap--vertical .fotorama__thumb__arr--right {
+    background: #fff !important;
 }
 
 .fotorama--fullscreen {
@@ -1876,7 +1924,7 @@ img.share-social {
 @media only screen and (max-width: 767px) {
     .catalog-product-view .breadcrumbs,
     .catalog-product-view .lineQuickView,
-    .magnify-lens {
+    .magnify-lens, #preview {
         display: none;
     }
 
