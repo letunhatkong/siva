@@ -76,6 +76,11 @@
     <referenceBlock name="catalog.compare.sidebar" remove="true" />
     <referenceBlock name="wishlist_sidebar" remove="true" />
 
+    <!-- Remove links on customer account menu -->
+    <referenceBlock name='customer-account-navigation-downloadable-products-link' remove='true'/>
+    <referenceBlock name='customer-account-navigation-product-reviews-link' remove='true'/>
+    <referenceBlock name='customer-account-navigation-newsletter-subscriptions-link' remove='true'/>
+
     <!-- footer -->
     <referenceBlock name="store_switcher" remove="true" />
     <referenceBlock name="footer_links" remove="true" />

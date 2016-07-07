@@ -1750,7 +1750,7 @@ img.share-social {
 }
 
 .fotorama__nav--thumbs {
-    padding: 0;
+    padding: 27px 0;
     height: 630px !important;
 }
 
@@ -1790,14 +1790,14 @@ img.share-social {
     float: left;
     width: 99px;
     height: 632px;
-    padding: 27px 0;
+    padding: 0;
 }
 
 .fotorama__arr--disabled {
     opacity: 1;
 }
 
-.fotorama__stage {
+.fotorama__wrap .fotorama__stage {
     float: right;
     width: calc(100% - 115px) !important;
     padding-bottom: calc(134% - 153px) !important;
@@ -1823,7 +1823,8 @@ img.share-social {
 }
 
 .fotorama__nav__frame--thumb.fotorama__active > .fotorama__thumb {
-    border: 1px solid #000;
+    border: 2px solid #000;
+    padding: 2px;
 }
 
 .fotorama__nav--thumbs .fotorama__nav__frame {
@@ -1851,14 +1852,14 @@ img.share-social {
 
 .fotorama--fullscreen .fotorama__stage {
     position: absolute;
-    top: -50px !important;
+    top: 0 !important;
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
     margin: auto !important;
     width: auto !important;
     height: 90% !important;
-    padding: 50px 15px 0;
+    padding: 50px 15px 0 !important;
     line-height: 1 !important;
     overflow: visible;
 }
@@ -1899,14 +1900,8 @@ img.share-social {
     top: -10px !important;
 }
 
-.fotorama__fullscreen .fotorama__zoom-in {
-    /*background:  url(/pub/media/images/icon/full/zoomIn.png) no-repeat center;*/
-    display: none;
-}
-
-.fotorama__fullscreen .fotorama__zoom-out {
-    /*background:  url(/pub/media/images/icon/full/zoomOut.png) no-repeat center !important;*/
-    display: none;
+.fotorama__zoom-in, .fotorama__zoom-out {
+    display: none !important;
 }
 
 .fotorama__fullscreen .fotorama__arr--prev .fotorama__arr__arr {
@@ -1919,6 +1914,22 @@ img.share-social {
 
 .fotorama__fullscreen .fotorama__arr--next {
     right: 0 !important;
+}
+
+.catalog-product-view .swatch-option-tooltip {
+    display: none !important;
+}
+
+.summaryDetail {
+    padding: 0 0 12px;
+    font-size: 14px;
+    color: #555;
+}
+
+.swatch-option.selected,
+.swatch-option.image:not(.disabled):hover,
+.swatch-option.color:not(.disabled):hover {
+    outline: 2px solid #000;
 }
 
 @media only screen and (max-width: 767px) {

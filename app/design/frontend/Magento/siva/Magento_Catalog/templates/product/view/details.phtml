@@ -4,17 +4,17 @@ $product = $block->getProduct();
 
 <div class="detailInfoWrapper">
     <div class="detailInner">
+        <div class="detailHead"><span>Detail</span><div class="dropContent"></div></div>
+        <div class="content hidden">
+            <?= $product->getDescription() ?>
+        </div>
+    </div>
+    <div class="detailInner">
         <div class="detailHead">
             <span>Editor's Review</span><div class="dropContent"></div>
         </div>
         <div class="content hidden">
             <?= $product->getReviewText() ?>
-        </div>
-    </div>
-    <div class="detailInner">
-        <div class="detailHead"><span>Detail</span><div class="dropContent"></div></div>
-        <div class="content hidden">
-            <?= $product->getDescription() ?>
         </div>
     </div>
 </div>
