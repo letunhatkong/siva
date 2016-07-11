@@ -1686,7 +1686,7 @@ img.share-social {
     position: absolute;
     pointer-events: none;
     font-size: 30px;
-    left: -5px;
+    left: -6px;
     top: -12px;
     width: 0;
     height: 0;
@@ -1694,6 +1694,31 @@ img.share-social {
 
 .dropContent.active:after {
     content: "\e622";
+}
+
+.swatch-attribute-label {
+    text-transform: uppercase;
+}
+
+.shippingDetail{
+    color: #585858;
+}
+
+.catalog-product-view .product-info-main .price-box .price-wrapper .price {
+    font-size: 26px;
+}
+
+.catalog-product-view .product-info-main .box-tocart .field.qty,
+.catalog-product-view .product-info-main .product-info-stock-sku .stock {
+    display: none;
+}
+
+.catalog-product-view .swatch-attribute.color {
+    margin: 0 0 30px;
+}
+
+.catalog-product-view .swatch-attribute.size .swatch-attribute-options {
+    width: 200px;
 }
 
 /* Size Chart */

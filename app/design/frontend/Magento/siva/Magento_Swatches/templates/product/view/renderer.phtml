@@ -29,6 +29,11 @@
 
 <div class="lineQuickView"></div>
 
+<p><?= ($block->getProduct()->getStatus()) ? "In stock" : "Out of stock" ?></p>
+<br>
+
+<a href="/shipping-return" class="shipingDetail">* Shipping & Return</a>
+
 <script type="text/javascript">
     require(['jquery', 'jquery/ui'], function($){
         $(document).ready(function($) {
