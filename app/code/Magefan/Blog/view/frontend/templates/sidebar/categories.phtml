@@ -1,0 +1,81 @@
+<?php
+/**
+ * Copyright © 2015 Ihor Vansach (ihor@magefan.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog sidebar categories template
+ *
+ * @var $block \Magefan\Blog\Block\Sidebar\Categories
+ */
+?>
+
+<?php $items = $this->getGroupedChilds();
+$size = count($items);
+?>
+
+<?php if (count($items)) { ?>
+
+    <div class="widget block block-categories" data-bind="scope: 'categories'">
+        <!-- <div class="block-title"><strong>Categories</strong></div>-->
+
+        <ul class="blogMenu" id="blogMenuUl">
+            <?php
+            $level = 0;
+            $first = true;
+            $_i = 0;
+            foreach ($items as $item) {
+                $newLevel = $item->getLevel();
+                $hasSub = '';
+                if ($_i + 1 < $size) $hasSub = ($item->getId() == $items[$_i + 1]->getParentId()) ? 'hasSub' : '';
+
+                if ($level == $newLevel && !$first) {
+                    echo '</li>';
+                }
+
+                if ($level < $newLevel) {
+                    echo '<ul class="subMenu ul-lv-' . $newLevel . '">';
+                }
+
+                if ($level > $newLevel) {
+                    for ($i = $level; $i > $newLevel; $i--) {
+                        echo '</ul></li>';
+                    }
+                }
+            ?>
+            <li class="item <?= $hasSub . ' li-lv-' . $newLevel ?>">
+                <?= ($hasSub !== '') ? '<span class="dropBlogMenu">+</span>' : '' ?>
+                <a href="<?= $item->getCategoryUrl() ?>">
+                    <?= $block->escapeHtml($item->getTitle()) ?>
+                </a>
+            <?php
+                $level = $newLevel;
+                $first = false;
+                $_i++;
+            }
+            ?>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        require(['jquery', 'jquery/ui'], function (jQuery) {
+            jQuery(document).ready(function(){
+                jQuery('.dropBlogMenu').click(function(){
+                    var selectCt = jQuery(this).parent().find('ul.subMenu').first();
+                    if (selectCt.is(':visible')) {
+                        jQuery(this).text("+");
+                        selectCt.slideUp('normal');
+                    } else {
+                        jQuery(this).text("-");
+                        selectCt.slideDown('normal');
+                    }
+                });
+            })
+        })
+    </script>
+
+<?php } ?>
