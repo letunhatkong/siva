@@ -255,7 +255,27 @@ $productModel = $_objectManager->get('Magento\Catalog\Model\Product');
                 // Click close pop-up quickView
                 $('#closeQuickViewAction').click(function() {
                     $('.containerPopUpWrap').removeClass("open");
+                });
+
+                // Sort Tool - Detect current sort
+                var curUrl = window.location.href;
+                var search = curUrl.split("?")[1];
+                if (search && search != "") {
+                    $('#authenticationPopup + .toolbar-products #select-sort-tool > option').each(function(){
+                        if ($(this).val() == search) {
+                            $(this).prop("selected", true);
+                            return false;
+                        }
+                    })
+                }
+               // Sort Tool - Detect change sort type
+                $('#select-sort-tool').change(function() {
+                    var url = $(this).val();
+                    var curUrl = window.location.href;
+                    var baseUrl = curUrl.split("?")[0];
+                    window.location.href = baseUrl + "?" + url;
                 })
+
             });
         });
     </script>

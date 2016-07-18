@@ -14,12 +14,29 @@
  * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
  */
 use Magento\Catalog\Model\Product\ProductList\Toolbar;
+
 ?>
 <?php if ($block->getCollection()->getSize()): ?>
     <div class="toolbar toolbar-products" data-mage-init='<?= $block->getWidgetOptionsJson(); ?>'>
-        <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
+        <?php //include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
+
+        <div id="sort-tool">
+            <span>Sort by</span>
+            <div class="sort-inner-tool">
+                <select id="select-sort-tool">
+                    <option value=""></option>
+                    <option value="">Newest to Oldest</option>
+                    <option value="">Oldest to Newest</option>
+                    <option value="product_list_order=price&product_list_dir=asc">Price: Low to High</option>
+                    <option value="product_list_order=price&product_list_dir=desc">Price: High to Low</option>
+                    <option value="product_list_order=name&product_list_dir=asc">Name: A to Z</option>
+                    <option value="product_list_order=name&product_list_dir=desc">Name: Z to A</option>
+                </select>
+            </div>
+        </div>
+
         <a href="?product_list_limit=all"><span class="viewAll">VIEW ALL</span></a>
-        <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/limiter.phtml')) ?>
+        <?php include($block->getTemplateFile('Magento_Catalog::product/list/toolbar/limiter.phtml')) ?>
         <?php echo $block->getPagerHtml() ?>
 
     </div>

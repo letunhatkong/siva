@@ -8,7 +8,7 @@
 
 <div class="swatch-opt"></div>
 <div class="summaryDetail"><?= $block->getProduct()->getSummary() ?></div>
-<div class="clickSizeChart"><span>* Size Chart</span></div>
+
 <div id="sizeChartContent">
     <div class="wrap">
         <div id="closeSizeChart">( Close )</div>
@@ -42,6 +42,10 @@
                     if (jQuery('#sizeChartContent').hasClass("open")) {
                         jQuery('#sizeChartContent').removeClass('open');
                     } else {
+                        var pos = jQuery(this).position();
+                        console.log(pos.top + " " + pos.left);
+                        jQuery('#sizeChartContent').css("left",pos.left+"px");
+                        jQuery('#sizeChartContent').css("top",(pos.top + 30)+"px");
                         jQuery('#sizeChartContent').addClass('open');
                     }
                 });
