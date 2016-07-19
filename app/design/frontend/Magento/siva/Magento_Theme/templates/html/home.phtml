@@ -55,7 +55,7 @@ $_sub = $sa->getAllBannerByType($sa::TYPE_SUB_BANNER);
 <div class="row subBanner">
     <?php $i = 1; ?>
     <?php foreach ($_sub as $item) { ?>
-        <div class="col-xs-6 col-sm-4 subBannerItem">
+        <div class="col-xs-4 col-sm-4 subBannerItem">
             <a href="<?= $item['link'] ?>">
                 <div class="img-resp img75">
                     <img class="" src="<?= $mediaUrl . $item['image'] ?>"/>
@@ -173,7 +173,7 @@ $collection = $productCollection->create()
                     <div class="row">
                 <?php } ?>
 
-                <div class="col-xs-6 col-sm-4 col-md-2" style="padding-bottom: 10px; padding-top: 10px">
+                <div class="col-xs-6 col-sm-4 col-md-2 sns">
                     <a href="<?= $post->link ?>">
                         <div class="img-resp img100">
                             <img src="<?= $post->images->thumbnail->url ?>"/>
