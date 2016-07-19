@@ -9,9 +9,9 @@
 <div class="swatch-opt"></div>
 <div class="summaryDetail"><?= $block->getProduct()->getSummary() ?></div>
 
-<div id="sizeChartContent">
+<div class="popUpDetailPage" id="sizeChartContent">
     <div class="wrap">
-        <div id="closeSizeChart">( Close )</div>
+        <div class="closeOnDetail" id="closeSizeChart">( Close )</div>
         <div class="content">
             <?= $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('size_chart')->toHtml();?>
         </div>
@@ -31,12 +31,21 @@
 
 <p><?= ($block->getProduct()->getStatus()) ? "In stock" : "Out of stock" ?></p>
 
-<a href="/shipping-return" class="shipingDetail">* Shipping & Return</a>
+<a href="javascript:void(0);" class="shipingDetail">* Shipping & Return</a>
+<div class="popUpDetailPage" id="shippingContent">
+    <div class="wrap">
+        <div class="closeOnDetail" id="closeShipping">( Close )</div>
+        <div class="content">
+            <?= $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('shipping_return')->toHtml();?>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
     require(['jquery', 'jquery/ui'], function($){
         $(document).ready(function($) {
             $(window).load(function() {
+                // Size Chart
                 jQuery('.clickSizeChart > span').click(function(){
                     if (jQuery('#sizeChartContent').hasClass("open")) {
                         jQuery('#sizeChartContent').removeClass('open');
@@ -50,6 +59,18 @@
                 });
                 jQuery('#closeSizeChart').click(function(){
                     jQuery('#sizeChartContent').removeClass('open');
+                });
+
+                // Shipping
+                jQuery('.shipingDetail').click(function(){
+                    if (jQuery('#shippingContent').hasClass("open")) {
+                        jQuery('#shippingContent').removeClass('open');
+                    } else {
+                        jQuery('#shippingContent').addClass('open');
+                    }
+                });
+                jQuery('#closeShipping').click(function(){
+                    jQuery('#shippingContent').removeClass('open');
                 })
             });
         });
