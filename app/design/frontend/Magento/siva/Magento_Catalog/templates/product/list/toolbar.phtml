@@ -21,9 +21,9 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
         <?php //include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
 
         <div id="sort-tool">
-            <span>Sort by</span>
+            <span>SORT</span>
             <div class="sort-inner-tool">
-                <select id="select-sort-tool">
+                <select class="hidden-xs" id="select-sort-tool">
                     <option value=""></option>
                     <option value="">Newest to Oldest</option>
                     <option value="">Oldest to Newest</option>
@@ -32,6 +32,14 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
                     <option value="product_list_order=name&product_list_dir=asc">Name: A to Z</option>
                     <option value="product_list_order=name&product_list_dir=desc">Name: Z to A</option>
                 </select>
+                <div class="visible-xs sortInXs" id="select-sort-tool-xs">
+                    <a href="javascript:void(0);">Newest to Oldest</a>
+                    <a href="javascript:void(0);">Oldest to Newest</a>
+                    <a href="?product_list_order=price&product_list_dir=asc">Price: Low to High</a>
+                    <a href="?product_list_order=price&product_list_dir=desc">Price: High to Low</a>
+                    <a href="?product_list_order=name&product_list_dir=asc">Name: A to Z</a>
+                    <a href="?product_list_order=name&product_list_dir=desc">Name: Z to A</a>
+                </div>
             </div>
         </div>
 

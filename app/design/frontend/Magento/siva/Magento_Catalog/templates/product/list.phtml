@@ -266,7 +266,13 @@ $productModel = $_objectManager->get('Magento\Catalog\Model\Product');
                             $(this).prop("selected", true);
                             return false;
                         }
-                    })
+                    });
+                    $('#authenticationPopup + .toolbar-products #select-sort-tool-xs > a').each(function(){
+                        if ($(this).attr("href") == ("?"+search)) {
+                            $(this).addClass("active");
+                            return false;
+                        }
+                    });
                 }
                // Sort Tool - Detect change sort type
                 $('#select-sort-tool').change(function() {
@@ -274,7 +280,28 @@ $productModel = $_objectManager->get('Magento\Catalog\Model\Product');
                     var curUrl = window.location.href;
                     var baseUrl = curUrl.split("?")[0];
                     window.location.href = baseUrl + "?" + url;
-                })
+                });
+
+                // Click Filter Icon on mobile
+                $('.catalog-category-view .filter-title').click(function() {
+                    var isVisible = $('#narrow-by-list').is(":visible");
+                    if (isVisible) {
+                        $('#narrow-by-list').css("display","none");
+                        $(this).removeClass("open");
+                    } else {
+                        $('#narrow-by-list').css("display","block");
+                        $(this).addClass("open");
+                    }
+                });
+                $('.catalog-category-view .block.filter dt.filter-options-title').click(function() {
+                    ($(this).hasClass("open")) ? $(this).removeClass("open") : $(this).addClass("open");
+                });
+
+                // Click Sort - mobile
+                $('#sort-tool > span').click(function() {
+                    var sortTool = $('#sort-tool');
+                    (sortTool.hasClass("open")) ? sortTool.removeClass("open") : sortTool.addClass("open");
+                });
 
             });
         });
