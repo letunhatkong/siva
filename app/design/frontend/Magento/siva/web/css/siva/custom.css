@@ -370,6 +370,16 @@ a:hover, .alink:hover {
     }
 }
 
+@media only screen and (max-width: 767px) {
+    .titFt {
+        padding: 15px 10px;
+    }
+
+    .itemMenuFt.hasIcon .titFt:after {
+        right: 10px;
+    }
+}
+
 /* # Footer */
 
 /* Slider home */
@@ -1432,6 +1442,7 @@ p.headHome {
     .catalog-category-view .filter-content .items a {
         color: #000;
     }
+
     .catalog-category-view .filter-content .items a.remove,
     .catalog-category-view .filter-content a.clear {
         color: #777;
@@ -1491,9 +1502,36 @@ p.headHome {
     }
 
     #sort-tool .sortInXs a:hover,
-    #sort-tool .sortInXs a.active{
+    #sort-tool .sortInXs a.active {
         color: #fff;
         background: #828282;
+    }
+
+    /* list page - drop-down */
+    .catalog-category-view #page-title-heading {
+        cursor: pointer;
+    }
+
+    .catalog-category-view #page-title-heading:after {
+        position: relative;
+        width: 22px;
+        height: 22px;
+        content: '';
+        background: url(/pub/media/images/icon/open.png) no-repeat center;
+        float: right;
+        margin-top: 5px;
+    }
+
+    .catalog-category-view .column.main.close #page-title-heading:after {
+        background-image: url(/pub/media/images/icon/close.png);
+    }
+
+    .catalog-category-view .column.main.close > div:not(:first-child) {
+        display: none;
+    }
+
+    .catalog-category-view .column.main.close .page-title-wrapper {
+        padding-bottom: 20px;
     }
 }
 
@@ -2255,6 +2293,7 @@ img.share-social {
     background: url(/pub/media/images/icon/full/exit.png) no-repeat center;
     right: 15px !important;
     top: 0 !important;
+    opacity: 0.5 !important;
 }
 
 .fotorama__fullscreen .fotorama__arr--prev .fotorama__arr__arr {
@@ -2270,6 +2309,7 @@ img.share-social {
     margin: 0;
     top: 0;
     left: 15px;
+    opacity: 0.5;
 }
 
 .fotorama__fullscreen .fotorama__zoom-out {
@@ -2277,6 +2317,12 @@ img.share-social {
     margin: 0;
     top: 65px;
     left: 15px;
+    opacity: 0.5;
+}
+
+.fotorama__fullscreen .fotorama__zoom-in:hover, .fotorama__fullscreen .fotorama__zoom-out:hover,
+.fotorama--fullscreen .fotorama__fullscreen-icon:hover {
+    opacity: 1 !important;
 }
 
 .fotorama__fullscreen .fotorama__arr--next {

@@ -303,6 +303,13 @@ $productModel = $_objectManager->get('Magento\Catalog\Model\Product');
                     (sortTool.hasClass("open")) ? sortTool.removeClass("open") : sortTool.addClass("open");
                 });
 
+                // Click Main content - mobile
+                $('.catalog-category-view .page-title-wrapper').click(function() {
+                    var content = $('.catalog-category-view .column.main');
+                    var isClose = content.hasClass("close");
+                    (isClose) ? content.removeClass("close") : content.addClass("close");
+                });
+
             });
         });
     </script>
