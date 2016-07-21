@@ -1617,6 +1617,17 @@ p.headHome {
     margin: 10px 0 20px;
 }
 
+.headQV {
+    color: #777;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.valHeadQV {
+    font-size: 13px;
+    color: #777;
+}
+
 #priceQuickView {
     font-size: 26px;
     font-weight: normal;
