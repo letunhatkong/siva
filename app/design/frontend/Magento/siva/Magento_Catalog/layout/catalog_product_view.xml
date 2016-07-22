@@ -15,5 +15,7 @@
         <!--<referenceBlock name="product.info.sku" remove="true" />-->
         <referenceBlock name="product.info.review" remove="true" />
 
+        <block class="Magento\Framework\View\Element\Template" name="collapse_detail" template="Magento_Catalog::product/view/collapse_detail.phtml" />
+        <move element="collapse_detail" destination="product.info.main" before="-"/>
     </body>
 </page>

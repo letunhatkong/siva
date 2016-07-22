@@ -2476,6 +2476,32 @@ img.share-social {
     .detailInner {
         padding: 10px 15px;
     }
+
+    #collapseDetail {
+        margin: 15px 0 0;
+        cursor: pointer;
+        line-height: 22px;
+    }
+
+    .icoCollDetail {
+        width: 22px;
+        height: 22px;
+        background: url(/pub/media/images/icon/minus.png) no-repeat center;
+        float: left;
+        margin: 0 10px 0 0;
+    }
+
+    .catalog-product-view .column.main {
+        padding: 0;
+    }
+
+    .product-info-main.close .icoCollDetail {
+        background-image: url(/pub/media/images/icon/plus.png);
+    }
+
+    .product-info-main.close > div:not(:first-child) {
+        display: none;
+    }
 }
 
 /* # Detail Page */

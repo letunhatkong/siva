@@ -1,0 +1,25 @@
+<div id="collapseDetail" class="visible-xs">
+    <div class="icoCollDetail"></div>
+    <span class="txtColDetail">INFO</span>
+</div>
+<div class="clearfix pad10"></div>
+
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui'], function($){
+        $(document).ready(function($) {
+            $('#collapseDetail').click(function() {
+                var content = $('.catalog-product-view .product-info-main');
+                if (content.hasClass("close")) {
+                   content.removeClass("close");
+                } else {
+                    content.addClass("close");
+                }
+            });
+        });
+    });
+
+</script>
+
+
+
+
