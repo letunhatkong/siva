@@ -24,9 +24,8 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
             <span>SORT</span>
             <div class="sort-inner-tool">
                 <select class="hidden-xs" id="select-sort-tool">
-                    <option value=""></option>
-                    <option value="">Newest to Oldest</option>
-                    <option value="">Oldest to Newest</option>
+                    <option value="product_list_order=created_at&product_list_dir=desc">Newest to Oldest</option>
+                    <option value="product_list_order=created_at&product_list_dir=asc">Oldest to Newest</option>
                     <option value="product_list_order=price&product_list_dir=asc">Price: Low to High</option>
                     <option value="product_list_order=price&product_list_dir=desc">Price: High to Low</option>
                     <option value="product_list_order=name&product_list_dir=asc">Name: A to Z</option>
