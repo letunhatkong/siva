@@ -75,7 +75,7 @@ $productCollection = $_objectManager->create('Magento\Catalog\Model\ResourceMode
 $collection = $productCollection->create()
     ->addAttributeToSelect('*')
     ->addFieldToFilter("status", "1")
-    ->addFieldToFilter("type_id", array('neq' => 'configurable'))
+    ->addFieldToFilter("type_id", array('eq' => 'configurable'))
     ->setOrder('created_at', 'DESC')
     ->setPageSize(12)
     ->load();
@@ -145,60 +145,7 @@ $collection = $productCollection->create()
     <div class="clearfix pad100"></div>
 <?php } ?>
 
-    <!-- SNS SIVA -->
-    <?php
-    function fetchData($url){
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
-        $result = curl_exec($ch);
-        curl_close($ch);
-        return $result;
-    }
-    $result = fetchData("https://api.instagram.com/v1/users/3309870573/media/recent?access_token=3309870573.98164b1.d872979b5c61476ea4994fcd5d316ea5");
-    //echo $result;
-    $result = json_decode($result);
-    ?>
 
-    <p class="headHome">SNS @ SIVA</p>
-    <div id="snsSiva" class="carousel slide productSlider" data-ride="carousel" data-interval="false">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <!-- Items -->
-            <?php $i = 1; $max = count($result->data); ?>
-            <?php foreach ($result->data as $post) { ?>
-                <?php if ($i % 6 == 1) { ?>
-                    <div class="item <?= ($i == 1) ? ' active' : '' ?>">
-                    <div class="row">
-                <?php } ?>
-
-                <div class="col-xs-6 col-sm-4 col-md-2 sns">
-                    <a href="<?= $post->link ?>">
-                        <div class="img-resp img100">
-                            <img src="<?= $post->images->thumbnail->url ?>"/>
-                        </div>
-                    </a>
-                </div>
-                <?php if ($i % 6 == 0 || $i == $max ) { ?>
-                    </div>
-                    </div>
-                <?php } ?>
-                <?php $i++; ?>
-            <?php } ?>
-        </div>
-        <!-- Controls -->
-        <a href="#snsSiva" role="button" data-slide="prev">
-            <div class="prevButtonWrap slideCtr" aria-hidden="true">
-                <img src="<?= $mediaUrl ?>images/icon/pLeft.png"/>
-            </div>
-        </a>
-        <a href="#snsSiva" role="button" data-slide="next">
-            <div class="nextButtonWrap slideCtr" aria-hidden="true">
-                <img src="<?= $mediaUrl ?>images/icon/pRight.png"/>
-            </div>
-        </a>
-    </div>
 </div>
 
 <style>
